@@ -16,18 +16,18 @@
             }
         }
         .form-header {
-            background-color: #4CAF50; /* Color de fondo */
+            background-color: #4CAF50; 
             padding: 20px;
             text-align: center;
-            border-radius: 10px 10px 0 0; /* Bordes redondeados en la parte superior */
+            border-radius: 10px 10px 0 0; 
         }
 
         .form-header h1 {
-            color: #FFFFFF; /* Color de texto */
-            font-family: 'Arial', sans-serif; /* Tipo de letra */
+            color: #FFFFFF; 
+            font-family: 'Arial', sans-serif; 
             margin: 0;
             font-size: 24px;
-            letter-spacing: 1px; /* Espaciado entre letras */
+            letter-spacing: 1px; 
         }
     </style>
 </head>
@@ -62,8 +62,22 @@
         <input type="" id="salario" name="salario" oninput="validarSoloNumeros(this)">
 
      <br>
+     <br>
      <button type="button" id="agregarBtn">Agregar Empleado</button> 
     </form>
+
+    <table id="resultados">
+        <thead>
+            <tr>
+         
+                <th>Nombre y apellido</th>                
+                <th>Ciudad</th>
+                <th>Edad</th>
+                <th>id</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
 
 

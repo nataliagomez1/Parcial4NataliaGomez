@@ -9,8 +9,7 @@ function validarSoloNumeros(input) {
 }
 
 window.onload = function() {
-    // Primero, cargar los departamentos (usando tu primer JSON)
-    fetch('departments.json')  // Cambia a la ruta correcta de tu archivo.
+    fetch('departments.json')  
     .then(response => response.json())
     .then(data => {
         const selectDepartamento = document.getElementById('selectDepartamento');
@@ -23,23 +22,20 @@ window.onload = function() {
     })
     .catch(error => console.error('Error cargando departamentos:', error));
 
-    // Ahora, escuchar cuando se cambia el departamento
+   
     document.getElementById('selectDepartamento').addEventListener('change', function() {
         const selectedDepartment = this.value;
 
-        // Cargar las ciudades basado en el departamento seleccionado (usando tu segundo JSON)
-        fetch('towns.json')  // Cambia a la ruta correcta de tu archivo.
+        
+        fetch('towns.json')  
         .then(response => response.json())
         .then(data => {
             const selectCiudad = document.getElementById('selectCiudad');
             
-            // Limpiar las ciudades anteriores
             selectCiudad.innerHTML = '';
 
-            // Filtrar las ciudades que pertenecen al departamento seleccionado
             const ciudades = data.filter(ciudad => ciudad.department === selectedDepartment);
 
-            // Agregar las ciudades filtradas al segundo select
             ciudades.forEach(ciudad => {
                 const optionElement = document.createElement('option');
                 optionElement.value = ciudad.code;
@@ -50,4 +46,48 @@ window.onload = function() {
         .catch(error => console.error('Error cargando ciudades:', error));
     });
 };
+let contadorID = 0; 
+
+document.getElementById('agregarBtn').addEventListener('click', function() {
+
+    
+   
+
+    const apellido= document.getElementById('apellidos');
+    const nombre= document.getElementById('nombres');
+    const selectDepartamento = document.getElementById('selectDepartamento');
+    const selectCiudad = document.getElementById('selectCiudad');
+    const fecha= document.getElementById('fecha');
+    const salario= document.getElementById('salario');
+
+    const apellidoE=apellido.value;
+    const nombreE=nombre.value;
+    const departamentoSeleccionado = selectDepartamento.options[selectDepartamento.selectedIndex].text;
+    const ciudadSeleccionada = selectCiudad.options[selectCiudad.selectedIndex].text;
+    const fechaE= fecha.value;
+    const salarioE = salario.value;
+
+
+    const tabla = document.getElementById('resultados').getElementsByTagName('tbody')[0];
+
+
+    const nuevaFila = tabla.insertRow();
+
+    const celda1 = nuevaFila.insertCell(0);
+    const celda2 = nuevaFila.insertCell(1);
+    const celda3 = nuevaFila.insertCell(2);
+    const celda4 = nuevaFila.insertCell(3);
+    
+
+    celda1.textContent = nombreE +" "+ apellidoE;
+    celda2.textContent = ciudadSeleccionada;
+    celda3.textContent = fechaE;
+    contadorID++
+    celda4.textContent= contadorID;
+
+ 
+});
+
+
+
 
